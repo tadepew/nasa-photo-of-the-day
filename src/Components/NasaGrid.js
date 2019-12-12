@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NasaCard from "./NasaCard";
-import { isTemplateElement } from "@babel/types";
 
 export default function NasaGrid() {
   const [nasaData, setNasaData] = useState([]);
+  // const [newDate, setNewDate] = useState([]);
 
   useEffect(() => {
     axios
@@ -19,10 +19,8 @@ export default function NasaGrid() {
 
   return (
     <div className="container">
+      {/* <button onClick={() => setNewDate("Yesterday")}></button> */}
       <div className="entry">
-        {/* {Object.keys(nasaData).map((item, index) => {
-          return <NasaCard key={index} img={item.hdurl} date={item.date} />;
-        })} */}
         <NasaCard
           photo={nasaData.hdurl}
           title={nasaData.title}
