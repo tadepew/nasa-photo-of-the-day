@@ -1,22 +1,40 @@
 import React from "react";
 import logo from "../../src/img/nasa.png";
 import dateFormat from "dateformat";
-
-var now = new Date();
+import {
+  CardBody,
+  Logo,
+  Header,
+  Apod,
+  Description,
+  Top,
+  Title,
+  Today
+} from "../Styles";
+import { dates } from "./data";
+import moment from "moment";
 
 const NasaCard = props => {
   return (
-    <div className="nasa-card">
-      <header>
-        <img className="logo" src={logo} alt="nasa logo" />
-        <h1>{props.title}</h1>
-        <h2>{dateFormat(now, "mmmm dS, yyyy")}</h2>
-      </header>
+    <CardBody>
+      <Header>
+        <Top>
+          <Logo src={logo} alt="nasa logo" />
+          <h1>NASA Photo of the Day</h1>
+          <Logo src={logo} alt="nasa logo" />
+        </Top>
+        <Today>
+          {moment(new Date(props.date))
+            .add(1, "day")
+            .format("MMMM Do, YYYY")}
+        </Today>
+        <Title>{props.title}</Title>
+      </Header>
       <div className="card-body">
-        <img className="apod-image" alt="Image of the Day" src={props.photo} />
-        <p>{props.explanation}</p>
+        <Apod alt="Image of the Day" src={props.photo} />
+        <Description>{props.explanation}</Description>
       </div>
-    </div>
+    </CardBody>
   );
 };
 
